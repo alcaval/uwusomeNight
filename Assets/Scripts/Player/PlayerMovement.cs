@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] private float speed = 2.0f;
+    [SerializeField] private Rigidbody _rb;
 
     // Update is called once per frame
     void Update()
@@ -22,7 +23,9 @@ public class PlayerMovement : MonoBehaviour
             speed = 2.0f;
         }
 
-        transform.Translate(Vector3.forward * vertical * speed + Vector3.right * horizontal * speed);
+        Vector3 right = Quaternion.AngleAxis(90, Vector3.up) * transform.forward;
+
+        _rb.MovePosition(_rb.transform.position + _rb.transform.forward * vertical * speed + right * horizontal * speed);
 
         Vector2 mousePos = Input.mousePosition;
 
