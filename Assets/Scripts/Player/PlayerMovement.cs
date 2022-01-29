@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
             speed = 2.0f;
         }
 
+        // if(!Physics.Linecast(transform.position + transform.forward * -1.2f, transform.position + transform.forward * 1.2f)){
+        //     transform.Translate(Vector3.forward * vertical * speed + Vector3.right * horizontal * speed);
+        // }
         Vector3 right = Quaternion.AngleAxis(90, Vector3.up) * transform.forward;
 
         _rb.MovePosition(_rb.transform.position + _rb.transform.forward * vertical * speed + right * horizontal * speed);

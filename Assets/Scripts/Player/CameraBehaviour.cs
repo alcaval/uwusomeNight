@@ -7,7 +7,7 @@ public class CameraBehaviour : MonoBehaviour
     public GameObject _target = null;
 
     private RaycastHit[] hits = null;
-    [SerializeField] private Transform originalPosition;
+
 
     private void Update()
     {
@@ -19,8 +19,7 @@ public class CameraBehaviour : MonoBehaviour
                 Renderer r = hit.collider.GetComponent<Renderer>();
                 if (r)
                 {
-                    //r.enabled = true;
-                    transform.position = originalPosition.position;
+                    r.enabled = true;
                 }
             }
         }
@@ -34,8 +33,7 @@ public class CameraBehaviour : MonoBehaviour
             Renderer r = hit.collider.GetComponent<Renderer>();
             if (r && r.gameObject.tag != "Player")
             {
-                //r.enabled = false;
-                transform.position = transform.position + transform.forward * 1.8f;
+                r.enabled = false;
             }
         }
 
