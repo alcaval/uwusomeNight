@@ -5,6 +5,8 @@ using UnityEngine;
 public class TorchBehaviour : MonoBehaviour
 {
     private Camera _main;
+    private bool _hasTorch = false;
+    private bool _firstTime = false;
     [SerializeField] private Light _torch;
     [SerializeField] private LightController _flickerController;
     [SerializeField] private float _battery = 100; 
@@ -19,6 +21,18 @@ public class TorchBehaviour : MonoBehaviour
     {
         _main = Camera.main;
         _torch = this.GetComponent<Light>();
+        if(!_hasTorch)
+        {
+            _torch.enabled = false;
+        }
+    }
+
+    public void TorchObtained()
+    {
+        _torch.enabled = true;
+        _hasTorch = true;
+        _firstTime = true;
+        _battery = 0;
     }
 
     // Update is called once per frame
@@ -30,7 +44,7 @@ public class TorchBehaviour : MonoBehaviour
         * Ese vector normalizado dicta la rotación de la luz
         */
 
-        if(Input.GetKeyDown(KeyCode.F))
+        if(Input.GetKeyDown(KeyCode.F) && _hasTorch)
         {
             torchSwitch();
         }
@@ -117,6 +131,12 @@ public class TorchBehaviour : MonoBehaviour
         if(!fallo) // Es decir, _battery >= 100
         {
             _battery = 100f;
+        }
+
+        if(_firstTime)
+        {
+            GameObject.Find("QuestManager").GetComponentInChildren<QuestUpdating>().accessNextQuest();
+            _firstTime = false;
         }
 
         torchSwitch();

@@ -7,7 +7,7 @@ public class DoorController : MonoBehaviour
     [SerializeField] private Animator _myDoor = null;
     [SerializeField] private bool _isFront;
 
-    private bool isDoorClosed = true;
+    public bool isDoorClosed = true;
 
 
     private void OnTriggerStay(Collider other)
@@ -24,7 +24,7 @@ public class DoorController : MonoBehaviour
         }    
     }
 
-    IEnumerator openDoorFront()
+    public IEnumerator openDoorFront()
     {
         isDoorClosed = false;
         _myDoor.Play("DoorOpenFront", 0, 0.0f);
@@ -33,7 +33,7 @@ public class DoorController : MonoBehaviour
         isDoorClosed = true;
     }
 
-    IEnumerator openDoorBack()
+    public IEnumerator openDoorBack()
     {
         isDoorClosed = false;
         _myDoor.Play("DoorOpenBack", 0, 0.0f);

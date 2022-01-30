@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] private float speed = 2.0f;
+    [SerializeField] private float speed = 10.0f;
     [SerializeField] private Rigidbody _rb;
 
     // Update is called once per frame
@@ -13,15 +13,6 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal") * Time.deltaTime;
         float vertical = Input.GetAxis("Vertical") * Time.deltaTime;
-
-        if(Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            speed = 5.0f;
-        }
-        else if(Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            speed = 2.0f;
-        }
 
         // if(!Physics.Linecast(transform.position + transform.forward * -1.2f, transform.position + transform.forward * 1.2f)){
         //     transform.Translate(Vector3.forward * vertical * speed + Vector3.right * horizontal * speed);
@@ -34,11 +25,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (mousePos.x < Screen.width/6)
         {
-            transform.Rotate(Vector3.up * -0.25f);
+            transform.Rotate(Vector3.up * -0.5f);
         }
         else if(mousePos.x >  5*Screen.width/6)
         {
-            transform.Rotate(Vector3.up * 0.25f);
+            transform.Rotate(Vector3.up * 0.5f);
         }
 
     }

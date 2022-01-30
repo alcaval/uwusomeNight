@@ -4816,7 +4816,6 @@ GameObject:
   - component: {fileID: 7472893984046825885}
   - component: {fileID: 7472893984046825882}
   - component: {fileID: 7472893984046825883}
-  - component: {fileID: 7472893984046825880}
   - component: {fileID: 7472893984046825884}
   m_Layer: 3
   m_Name: Trigger
@@ -4901,20 +4900,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7472893984046825880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7472893984046825878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f89aed816d4f494caee68e4ef78be52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightSource: {fileID: 0}
-  _isLightOn: 1
 --- !u!114 &7472893984046825884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4930,6 +4915,7 @@ MonoBehaviour:
   item: {fileID: 7472893984305446991}
   particleGenerator: {fileID: 7472893983140808241}
   particleDuration: 3
+  questManager: {fileID: 0}
 --- !u!1 &7472893984305446991
 GameObject:
   m_ObjectHideFlags: 0

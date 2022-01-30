@@ -8,11 +8,14 @@ public class QuestUpdating : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _label;
     [SerializeField] private List<string> _quests; 
-    private int _currentQuest = 0;
+    public int _currentQuest = 0;
+
+    void Start() {
+        GameObject.FindWithTag("firstDoor").GetComponentInChildren<DoorController>().isDoorClosed = false;
+    }
 
     void Update()
     {
-        print(_currentQuest);
         if(_currentQuest == 0 & Input.GetKeyDown(KeyCode.W)){
             accessNextQuest();
         }
@@ -25,8 +28,17 @@ public class QuestUpdating : MonoBehaviour
         }
     }
 
-    public void accessNextQuest(){
+    public void accessNextQuest()
+    {
+        if(_currentQuest == 2)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<TorchBehaviour>().TorchObtained();
+        }
+
         _currentQuest++;
+        if(_currentQuest == 4){
+            GameObject.FindWithTag("firstDoor").GetComponentInChildren<DoorController>().isDoorClosed = true;
+        }
         if(_currentQuest <= _quests.Count - 1){
             _label.text = (string) _quests[_currentQuest];
         }

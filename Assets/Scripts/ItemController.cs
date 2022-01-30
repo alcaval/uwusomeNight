@@ -7,6 +7,7 @@ public class ItemController : MonoBehaviour
     [SerializeField] GameObject item;
     [SerializeField] ParticleSystem particleGenerator;
     [SerializeField] float particleDuration;
+    [SerializeField] GameObject questManager;
     private bool _itemObtained = false;
 
     private void OnTriggerStay(Collider other)
@@ -17,6 +18,10 @@ public class ItemController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && !_itemObtained)
             {
                 StartCoroutine(getObject());
+                questManager.GetComponentInChildren<QuestUpdating>().accessNextQuest();
+                if(questManager.GetComponentInChildren<QuestUpdating>()._currentQuest == 5){
+                    //FUNDIDO A NEGRO
+                }
             }
         }
 
